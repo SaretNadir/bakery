@@ -7,7 +7,9 @@ module.exports = {
 
   // The plain compiled JavaScript will be output into this file
   output: {
-    filename: "dist/bundle.js"
+    filename: "bundle.js",
+    path: __dirname + "/dist",
+    publicPath: './dist/'
   },
 
   // This section desribes the transformations we will perform
@@ -24,6 +26,34 @@ module.exports = {
           // These are the specific transformations we'll be using.
           presets: ["react", "es2015", "stage-0"]
         }
+      },
+      {
+        test: /\.css$/,
+        loader: "style-loader!css-loader"
+      },
+      {
+        test: /\.png$/,
+        loader: "url-loader?limit=100000"
+      },
+      {
+        test: /\.jpg$/,
+        loader: "file-loader"
+      },
+      {
+        test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url-loader?limit=10000&mimetype=application/font-woff'
+      },
+      {
+        test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url-loader?limit=10000&mimetype=application/octet-stream'
+      },
+      {
+        test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'file-loader'
+      },
+      {
+        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url-loader?limit=10000&mimetype=image/svg+xml'
       }
     ]
   },
