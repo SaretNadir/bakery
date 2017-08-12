@@ -1,12 +1,12 @@
 import React from "react";
 import axios from 'axios';
 
-class Categories extends React.Component {
+class Products extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            categories: []
+            products: []
         }
 
         //this.deleteCategory = this.deleteCategory.bind(this);
@@ -14,9 +14,9 @@ class Categories extends React.Component {
 
     componentDidMount() {
         var component = this;
-        axios.get('/api/categories').then(function (response) {
+        axios.get('/api/products').then(function (response) {
             console.log(response);
-            component.setState({ categories: response.data });
+            component.setState({ products: response.data });
         });
     }
 
@@ -25,13 +25,14 @@ class Categories extends React.Component {
     render() {
         return (
             <div>
-                <h1>Categories View</h1>
+                <h1>Products View</h1>
                 <div className="container">
                     {
-                        this.state.categories.map((ctg) => (
-                            <div key={ctg._id} className="row">
-                                <div className="col col-xs-4">{ctg.code}</div>
-                                <div className="col col-xs-8">{ctg.name}</div>
+                        this.state.products.map((prod) => (
+                            <div key={prod._id} className="row">
+                                <div className="col col-xs-4">{prod.name}</div>
+                                <div className="col col-xs-4">{prod.price}</div>
+                                <div className="col col-xs-4">{prod.description}</div>
                                 {/*  <button onClick={this.deleteCategory} className="btn btn-danger">Delete</button> */}
                             </div>
                         ))
@@ -42,4 +43,4 @@ class Categories extends React.Component {
     }
 }
 
-export default Categories;
+export default Products;

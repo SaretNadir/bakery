@@ -12,4 +12,10 @@ router.post("/api/product", function (req, res) {
     });
 });
 
+router.get('/api/products', function(req, res) {
+   db.products.find({}, function(err, result){
+        res.json(result);
+   });
+});
+
 module.exports = router;
