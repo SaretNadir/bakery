@@ -20,7 +20,7 @@ class CreateProducts extends React.Component {
         event.preventDefault();
         console.log(this.state);
 
-        axios.post("/api/category", this.state);
+        axios.post("/api/product", this.state);
     }
 
 

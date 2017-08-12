@@ -1,4 +1,4 @@
-#save a product to the database
-- when the user clicks create product, send a request to the server
-- on the server, add a route to respond to the user's request
-    * save the new product to the database
+#display list of products
+- get the list of products from the api using axios
+- create a route to get the data from the database
+- render the list of products

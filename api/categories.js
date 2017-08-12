@@ -12,4 +12,10 @@ router.post("/api/category", function (req, res) {
     });
 });
 
+router.get('/api/categories', function(req, res) {
+   db.categories.find({}, function(err, result){
+        res.json(result);
+   });
+});
+
 module.exports = router;
