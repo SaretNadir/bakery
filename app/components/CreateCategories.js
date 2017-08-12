@@ -2,16 +2,22 @@ import React from "react";
 
 
 class CreateCategories extends React.Component {
-/*     constructor(props) {
+
+    constructor(props) {
         super(props);
+
         this.state = {
             name: '',
             code: ''
         };
 
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    } */
+        this.createCategory = this.createCategory.bind(this);
+    } 
+
+    createCategory(event) {
+        event.preventDefault();
+        console.log(this.state);
+    }
    
 
     render() {
@@ -23,13 +29,13 @@ class CreateCategories extends React.Component {
                             <hr />
                             <div className="form-group">
                                 <label htmlFor="categoryName">Category Name:</label>
-                                <input type="text" className="form-control" id="categoryName" placeholder="Name"/>
+                                <input onChange={(event) => this.setState({name: event.target.value})} type="text" className="form-control" placeholder="Name"/>
                             </div>
                             <div className="form-group">
                                 <label htmlFor="categoryCode">Category Code:</label>
-                                <input type="text" className="form-control" id="categoryCode" placeholder="Code"/>
+                                <input onChange={(event) => this.setState({code: event.target.value})} type="text" className="form-control" placeholder="Code"/>
                             </div>
-                            <input type="submit" className="btn btn-default col-xs-offset-9 col-xs-3" value="Submit" />
+                            <input onClick={this.createCategory} type="submit" className="btn btn-default col-xs-offset-9 col-xs-3" value="Submit" />
                         </form>
                     </div>
                 </div>

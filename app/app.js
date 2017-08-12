@@ -15,8 +15,8 @@ ReactDOM.render(
         <Switch>
             <Route exact path="/categories" component={Categories} />
             <Route exact path="/categories/create" component={CreateCategory} />
-{/*             <Route exact path="/products" component={Products} />
-            <Route exact path="/products/create" component={CreateProduct} /> */}
+            {/*<Route exact path="/products" component={Products} />
+            <Route exact path="/products/create" component={CreateProduct} />*/}
         </Switch>
     </BrowserRouter>,
     document.getElementById("app")
