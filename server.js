@@ -4,6 +4,7 @@ var bodyParser = require('body-parser');
 
 //api references
 var categories = require('./api/categories');
+var products = require('./api/products');
 
 var app = express();
 var port = 3000;
@@ -19,6 +20,7 @@ app.use("/content", express.static(path.join(__dirname, 'content')));
 
 //aqui vamos a definir las rutas del servidor
 app.use(categories);
+app.use(products);
 
 
 

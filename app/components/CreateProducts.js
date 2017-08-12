@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 
 
 class CreateProducts extends React.Component {
@@ -8,7 +9,8 @@ class CreateProducts extends React.Component {
 
         this.state = {
             name: '',
-            price: ''
+            price: '',
+            description:''
         };
 
         this.createProduct = this.createProduct.bind(this);
@@ -17,6 +19,8 @@ class CreateProducts extends React.Component {
     createProduct(event) {
         event.preventDefault();
         console.log(this.state);
+
+        axios.post("/api/category", this.state);
     }
 
 
@@ -34,6 +38,9 @@ class CreateProducts extends React.Component {
                         <div className="form-group">
                             <label htmlFor="productPrice">Product Price:</label>
                             <input onChange={(event) => this.setState({ price: event.target.value })} type="number" min="0" max="10000" className="form-control" placeholder="$ Price" />
+                        </div>
+                        <div className="form-group">
+                            <textarea onChange={(event) => this.setState({ description: event.target.value })} className="form-control" rows="5" placeholder="Product Description"></textarea>  
                         </div>
                         <input onClick={this.createProduct} type="submit" className="btn btn-default col-xs-offset-9 col-xs-3" value="Submit" />
                     </form>
