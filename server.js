@@ -25,8 +25,9 @@ app.use(products);
 
 
 // ruta por defecto, si no enconstraste con que responder, mandeme index.html
-app.use((req, res) => {
-    res.sendFile(path.join(__dirname, "./index.html"));
+app.get("*", function (req, res, next) {
+    if (req.url.startsWith("/api/")) return next();
+    res.sendFile(__dirname + "/index.html");
 });
 
 app.listen(port, () => {
