@@ -1,6 +1,6 @@
 import React from "react";
 import axios from 'axios';
-import "./Products.css"
+import "./Products.less"
 
 class Products extends React.Component {
     constructor(props) {
@@ -21,7 +21,7 @@ class Products extends React.Component {
 
     render() {
         return (
-            <div>
+            <div id="Products">
                 <h1>Products View</h1>
                 <div>
                     {this.state.products.map((prod) => (

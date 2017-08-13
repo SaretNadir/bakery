@@ -1,6 +1,6 @@
 import React from "react";
 import axios from 'axios';
-import "./Categories.css"
+import "./Categories.less"
 
 class Categories extends React.Component {
     constructor(props) {
@@ -24,7 +24,7 @@ class Categories extends React.Component {
     //deleteCategory() {}
     render() {
         return (
-            <div>
+            <div id="Categories">
                 <h1>Categories View</h1>
                 <div className="container">
                     {this.state.categories.map((ctg) => (
@@ -35,8 +35,8 @@ class Categories extends React.Component {
                                     <p className="col col-xs-12">{ctg.code}</p>
                                 </div>
                                 <div className="pull-right action-buttons">
-                                    <a href="http://www.jquery2dotnet.com" className="edit"><span className="glyphicon glyphicon-pencil"></span></a>
-                                    <a href="http://www.jquery2dotnet.com" className="trash"><span className="glyphicon glyphicon-trash"></span></a>
+                                    <a className="edit"><span className="glyphicon glyphicon-pencil"></span></a>
+                                    <a className="trash"><span className="glyphicon glyphicon-trash"></span></a>
                                 </div>
                             </li>
                             {/*  <button onClick={this.deleteCategory} className="btn btn-danger">Delete</button> */}

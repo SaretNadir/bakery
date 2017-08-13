@@ -24,6 +24,8 @@
     "express": "^4.15.4",
     "file-loader": "^0.11.2",
     "font-awesome": "^4.7.0",
+    "less": "^2.7.2",
+    "less-loader": "^4.0.5",
     "mongojs": "^2.4.1",
     "nodemon": "^1.11.0",
     "react": "^15.6.1",
