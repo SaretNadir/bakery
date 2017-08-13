@@ -1,0 +1,26 @@
+.list-group{
+    height: 500px;
+    margin: 0 5px -60px 5px;
+}
+
+.thumbnail
+{
+    margin-bottom: 20px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+}
+
+.thumbnail > img {
+height: 250px;
+}
+
+.item{
+-webkit-box-shadow: 5px 5px 10px -5px rgba(0,0,0,0.5);
+-moz-box-shadow: 5px 5px 10px -5px rgba(0,0,0,0.5);
+box-shadow: 5px 5px 10px -5px rgba(0,0,0,0.5);
+}
+
+.lead{
+margin:0;
+}

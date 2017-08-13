@@ -29,7 +29,7 @@ class CreateCategories extends React.Component {
             <div className="container-fluid">
                 <div className="row">
                     <form>
-                        <h1>Add Category</h1>
+                        <h2>Add Category</h2>
                         <hr />
                         <div className="form-group">
                             <label htmlFor="categoryName">Category Name:</label>

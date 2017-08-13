@@ -1,7 +1,6 @@
 import React from "react";
 import axios from "axios";
 
-
 class CreateProducts extends React.Component {
 
     constructor(props) {
@@ -10,7 +9,8 @@ class CreateProducts extends React.Component {
         this.state = {
             name: '',
             price: '',
-            description:''
+            description: '',
+            image: ''
         };
 
         this.createProduct = this.createProduct.bind(this);
@@ -23,13 +23,18 @@ class CreateProducts extends React.Component {
         axios.post("/api/product", this.state);
     }
 
-
     render() {
+
+        var imgStyle = {
+            height: 100,
+            marginTop: 10
+        }
+
         return (
-            <div className="container-fluid">
+            <div>
                 <div className="row">
                     <form>
-                        <h1>Add Product</h1>
+                        <h2>Add Product</h2>
                         <hr />
                         <div className="form-group">
                             <label htmlFor="productName">Product Name:</label>
@@ -40,7 +45,13 @@ class CreateProducts extends React.Component {
                             <input onChange={(event) => this.setState({ price: event.target.value })} type="number" min="0" max="10000" className="form-control" placeholder="$ Price" />
                         </div>
                         <div className="form-group">
-                            <textarea onChange={(event) => this.setState({ description: event.target.value })} className="form-control" rows="5" placeholder="Product Description"></textarea>  
+                            <label htmlFor="productImage">Product Description:</label>
+                            <textarea onChange={(event) => this.setState({ description: event.target.value })} className="form-control" rows="5" placeholder="Product Description"></textarea>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="productImage">Product Image:</label>
+                            <input onChange={(event) => this.setState({ image: event.target.value })} type="text" className="form-control" placeholder="Image URL" />
+                            <img src={this.state.image} alt="" className="col align-self-start img-rounded" style={imgStyle} />
                         </div>
                         <input onClick={this.createProduct} type="submit" className="btn btn-default col-xs-offset-9 col-xs-3" value="Submit" />
                     </form>

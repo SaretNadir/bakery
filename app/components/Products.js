@@ -1,5 +1,6 @@
 import React from "react";
 import axios from 'axios';
+import "./Products.css"
 
 class Products extends React.Component {
     constructor(props) {
@@ -8,8 +9,6 @@ class Products extends React.Component {
         this.state = {
             products: []
         }
-
-        //this.deleteCategory = this.deleteCategory.bind(this);
     }
 
     componentDidMount() {
@@ -20,22 +19,31 @@ class Products extends React.Component {
         });
     }
 
-    //deleteCategory() {}
-
     render() {
         return (
             <div>
                 <h1>Products View</h1>
-                <div className="container">
-                    {
-                        this.state.products.map((prod) => (
-                            <div key={prod._id} className="row">
-                                <div className="col col-xs-4">{prod.name}</div>
-                                <div className="col col-xs-4">{prod.price}</div>
-                                <div className="col col-xs-4">{prod.description}</div>
-                                {/*  <button onClick={this.deleteCategory} className="btn btn-danger">Delete</button> */}
+                <div>
+                    {this.state.products.map((prod) => (
+                        <div key={prod._id} className="row col-lg-3 col-md-4 col-xs-6">
+                            <div className="row list-group">
+                                <div className="item">
+                                    <div className="thumbnail">
+                                        <img src={prod.image} alt="" className="group list-group-image" />
+                                        <div className="caption">
+                                            <h4 className="group inner list-group-item-heading">{prod.name}</h4>
+                                            <p className="group inner list-group-item-text">{prod.description}</p>
+                                            <div className="row">
+                                                <div className="col-xs-12 col-md-6">
+                                                    <p className="lead">{"$" + prod.price}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        ))
+                        </div>
+                    ))
                     }
                 </div>
             </div>

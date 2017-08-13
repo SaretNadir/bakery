@@ -1,5 +1,6 @@
 import React from "react";
 import axios from 'axios';
+import "./Categories.css"
 
 class Categories extends React.Component {
     constructor(props) {
@@ -21,20 +22,26 @@ class Categories extends React.Component {
     }
 
     //deleteCategory() {}
-
     render() {
         return (
             <div>
                 <h1>Categories View</h1>
                 <div className="container">
-                    {
-                        this.state.categories.map((ctg) => (
-                            <div key={ctg._id} className="row">
-                                <div className="col col-xs-4">{ctg.code}</div>
-                                <div className="col col-xs-8">{ctg.name}</div>
-                                {/*  <button onClick={this.deleteCategory} className="btn btn-danger">Delete</button> */}
-                            </div>
-                        ))
+                    {this.state.categories.map((ctg) => (
+                        <div key={ctg._id} className="row">
+                            <li className="list-group-item">
+                                <div className="cat-name">
+                                    <h4 className="col col-xs-12">{ctg.name}</h4>
+                                    <p className="col col-xs-12">{ctg.code}</p>
+                                </div>
+                                <div className="pull-right action-buttons">
+                                    <a href="http://www.jquery2dotnet.com" className="edit"><span className="glyphicon glyphicon-pencil"></span></a>
+                                    <a href="http://www.jquery2dotnet.com" className="trash"><span className="glyphicon glyphicon-trash"></span></a>
+                                </div>
+                            </li>
+                            {/*  <button onClick={this.deleteCategory} className="btn btn-danger">Delete</button> */}
+                        </div>
+                    ))
                     }
                 </div>
             </div>
