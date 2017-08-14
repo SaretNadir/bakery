@@ -10,10 +10,12 @@ class CreateProducts extends React.Component {
             name: '',
             price: '',
             description: '',
-            image: ''
+            newImage:'',
+            images: []
         };
 
         this.createProduct = this.createProduct.bind(this);
+        this.addImage = this.addImage.bind(this);
     }
 
     createProduct(event) {
@@ -23,11 +25,19 @@ class CreateProducts extends React.Component {
         axios.post("/api/product", this.state);
     }
 
-    render() {
+    addImage(event) {
+        event.preventDefault();
+        this.state.images.push(this.state.newImage);
+        this.setState({images:this.state.images})
 
+    }
+
+    render() {
+        
         var imgStyle = {
             height: 100,
-            marginTop: 10
+            marginTop: 10,
+            margin:2
         }
 
         return (
@@ -49,9 +59,14 @@ class CreateProducts extends React.Component {
                             <textarea onChange={(event) => this.setState({ description: event.target.value })} className="form-control" rows="5" placeholder="Product Description"></textarea>
                         </div>
                         <div className="form-group">
-                            <label htmlFor="productImage">Product Image:</label>
-                            <input onChange={(event) => this.setState({ image: event.target.value })} type="text" className="form-control" placeholder="Image URL" />
-                            <img src={this.state.image} alt="" className="col align-self-start img-rounded" style={imgStyle} />
+                            <label htmlFor="productImage">Product Images:</label>
+                            <input onChange={(event) => this.setState({ newImage: event.target.value })} type="text" className="form-control" placeholder="Image URL" />
+                            <button onClick={this.addImage} className="btn btn-default">Add Image</button>
+
+                            {this.state.images.map((image,index) => (
+                                <img src={image} alt="" key={index} className="col img-rounded" style={imgStyle} />
+                            ))}
+
                         </div>
                         <input onClick={this.createProduct} type="submit" className="btn btn-default col-xs-offset-9 col-xs-3" value="Submit" />
                     </form>
