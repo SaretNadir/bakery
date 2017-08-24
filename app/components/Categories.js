@@ -24,7 +24,7 @@ class Categories extends React.Component {
     //deleteCategory() {}
     render() {
         return (
-            <div id="Categories">
+            <div id="Categories" className="container">
                 <h1>Categories View</h1>
                 <div className="container">
                     {this.state.categories.map((ctg) => (

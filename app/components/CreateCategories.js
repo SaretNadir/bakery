@@ -26,7 +26,7 @@ class CreateCategories extends React.Component {
 
     render() {
         return (
-            <div className="container-fluid">
+            <div className="container">
                 <div className="row">
                     <form>
                         <h2>Add Category</h2>

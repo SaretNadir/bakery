@@ -21,7 +21,7 @@ class Products extends React.Component {
 
     render() {
         return (
-            <div id="Products">
+            <div id="Products" className="container">
                 <h1>Products View</h1>
                 <div>
                     {this.state.products.map((prod) => (

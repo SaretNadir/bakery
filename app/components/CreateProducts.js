@@ -10,7 +10,7 @@ class CreateProducts extends React.Component {
             name: '',
             price: '',
             description: '',
-            newImage:'',
+            newImage: '',
             images: []
         };
 
@@ -28,20 +28,20 @@ class CreateProducts extends React.Component {
     addImage(event) {
         event.preventDefault();
         this.state.images.push(this.state.newImage);
-        this.setState({images:this.state.images})
+        this.setState({ images: this.state.images })
 
     }
 
     render() {
-        
+
         var imgStyle = {
             height: 100,
             marginTop: 10,
-            margin:2
+            margin: 2
         }
 
         return (
-            <div>
+            <div className="container">
                 <div className="row">
                     <form>
                         <h2>Add Product</h2>
@@ -60,10 +60,11 @@ class CreateProducts extends React.Component {
                         </div>
                         <div className="form-group">
                             <label htmlFor="productImage">Product Images:</label>
-                            <input onChange={(event) => this.setState({ newImage: event.target.value })} type="text" className="form-control" placeholder="Image URL" />
-                            <button onClick={this.addImage} className="btn btn-default">Add Image</button>
+                            <div className="input-group">
+                                <input onChange={(event) => this.setState({ newImage: event.target.value })} type="text" className="form-control" placeholder="Image URL" />
+                                <span className="input-group-btn"><button onClick={this.addImage} className="btn btn-default">Add Image</button></span></div>
 
-                            {this.state.images.map((image,index) => (
+                            {this.state.images.map((image, index) => (
                                 <img src={image} alt="" key={index} className="col img-rounded" style={imgStyle} />
                             ))}
 
