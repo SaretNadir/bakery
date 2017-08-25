@@ -9,6 +9,7 @@ import CreateCategory from "./components/CreateCategories";
 import Products from "./components/Products";
 import CreateProduct from "./components/CreateProducts";
 import HomePage from "./components/HomePage";
+import Admin from "./components/Admin";
 
 
 ReactDOM.render(
@@ -19,6 +20,7 @@ ReactDOM.render(
             <Route exact path="/products" component={Products} />
             <Route exact path="/products/create" component={CreateProduct} />
             <Route exact path="/" component={HomePage} />
+            <Route exact path="/admin" component={Admin} />
         </Switch>
     </BrowserRouter>,
     document.getElementById("app")

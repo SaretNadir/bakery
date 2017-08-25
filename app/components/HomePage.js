@@ -13,7 +13,6 @@ class HomePage extends React.Component {
         return (
             <div id="HomePage">
                 <nav className="navbar navbar-fixed-top navbar-inverse">
-
                     <div className="container">
                         <div className="navbar-header">
                             <button className="navbar-toggle collapsed" data-toggle="collapse" data-target="#display-menu" aria-expanded="false">
@@ -30,8 +29,8 @@ class HomePage extends React.Component {
                         <div className="collapse navbar-collapse" id="display-menu">
                             <ul className="nav navbar-nav navbar-right">
                                 <li><a href="/products">Products</a></li>
-                                <li><a href="/about">About</a></li>
-                                <li><a href="contact">Contact</a></li>
+                                <li><a href="">About</a></li>
+                                <li><a href="">Contact</a></li>
                                 <li className="dropdown"><a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Customer Name <span className="caret"></span></a>
                                     <ul className="dropdown-menu">
                                         <li><a href="">Your Account</a></li>

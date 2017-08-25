@@ -1,0 +1,33 @@
+#Admin {
+    .sidebar {
+        display: none;
+        border-right: 1px solid #e7e7e7;
+    }
+    .nav-sidebar {
+        margin: 0 -21px 20px -20px;
+        li {
+            border-bottom: 1px solid #e7e7e7;
+            a {
+                padding: 10px 20px;
+            }
+        }
+        .active {
+            background-color: #eee;
+            color: #337ab7;
+        }
+    }
+    @media(min-width:768px) {
+        .sidebar {
+            display: block;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            top: 51px;
+            overflow-x: hidden;
+            overflow-y: auto;
+            background-color: #f5f5f5;
+            border-right: 1px solid #e7e7e7;
+            padding: 20px;
+        }
+    }
+}
