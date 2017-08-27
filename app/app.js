@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Switch, history } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'font-awesome/css/font-awesome.css';
-import "./app.css";
+import "./app.less";
 import Categories from "./components/Categories";
 import CreateCategory from "./components/CreateCategories";
 import Products from "./components/Products";

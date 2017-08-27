@@ -27,21 +27,19 @@ class CreateCategories extends React.Component {
     render() {
         return (
             <div className="container">
-                <div className="row">
-                    <form>
-                        <h2>Add Category</h2>
-                        <hr />
-                        <div className="form-group">
-                            <label htmlFor="categoryName">Category Name:</label>
-                            <input onChange={(event) => this.setState({ name: event.target.value })} type="text" className="form-control" placeholder="Name" />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="categoryCode">Category Code:</label>
-                            <input onChange={(event) => this.setState({ code: event.target.value })} type="text" className="form-control" placeholder="Code" />
-                        </div>
-                        <input onClick={this.createCategory} type="submit" className="btn btn-default col-xs-offset-9 col-xs-3" value="Submit" />
-                    </form>
-                </div>
+                <form>
+                    <h2>Add Category</h2>
+                    <hr />
+                    <div className="form-group">
+                        <label htmlFor="categoryName">Category Name:</label>
+                        <input onChange={(event) => this.setState({ name: event.target.value })} type="text" className="form-control" placeholder="Name" />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="categoryCode">Category Code:</label>
+                        <input onChange={(event) => this.setState({ code: event.target.value })} type="text" className="form-control" placeholder="Code" />
+                    </div>
+                    <input onClick={this.createCategory} type="submit" className="btn btn-default col-xs-offset-9 col-xs-3" value="Submit" />
+                </form>
             </div>
         );
     }

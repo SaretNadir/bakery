@@ -7,11 +7,14 @@ class CreateProducts extends React.Component {
         super(props);
 
         this.state = {
-            name: '',
-            price: '',
-            description: '',
+            product: {
+                name: '',
+                price: '',
+                description: '',
+                images: [],
+            },
             newImage: '',
-            images: []
+            categories: []
         };
 
         this.createProduct = this.createProduct.bind(this);
@@ -22,18 +25,25 @@ class CreateProducts extends React.Component {
         event.preventDefault();
         console.log(this.state);
 
-        axios.post("/api/product", this.state);
+        axios.post("/api/product", this.state.product);
     }
 
     addImage(event) {
         event.preventDefault();
-        this.state.images.push(this.state.newImage);
-        this.setState({ images: this.state.images })
+        this.state.product.images.push(this.state.newImage);
+        this.setState({ images: this.state.product.images })
 
     }
 
-    render() {
+    componentDidMount() {
+        var component = this;
+        axios.get('/api/categories').then(function (response) {
+            console.log(response);
+            component.setState({ categories: response.data });
+        });
+    }
 
+    render() {
         var imgStyle = {
             height: 100,
             marginTop: 10,
@@ -42,37 +52,48 @@ class CreateProducts extends React.Component {
 
         return (
             <div className="container">
-                <div className="row">
-                    <form>
-                        <h2>Add Product</h2>
-                        <hr />
-                        <div className="form-group">
-                            <label htmlFor="productName">Product Name:</label>
-                            <input onChange={(event) => this.setState({ name: event.target.value })} type="text" className="form-control" placeholder="Name" />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="productPrice">Product Price:</label>
-                            <input onChange={(event) => this.setState({ price: event.target.value })} type="number" min="0" max="10000" className="form-control" placeholder="$ Price" />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="productImage">Product Description:</label>
-                            <textarea onChange={(event) => this.setState({ description: event.target.value })} className="form-control" rows="5" placeholder="Product Description"></textarea>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="productImage">Product Images:</label>
-                            <div className="input-group">
-                                <input onChange={(event) => this.setState({ newImage: event.target.value })} type="text" className="form-control" placeholder="Image URL" />
-                                <span className="input-group-btn"><button onClick={this.addImage} className="btn btn-default">Add Image</button></span></div>
+                <form>
+                    <h2>Add Product</h2>
+                    <hr />
+                    <div className="form-group">
+                        <label htmlFor="productName">Product Name:</label>
+                        <input onChange={(event) => this.setState({ product: { ...this.state.product, name: event.target.value } })} type="text" className="form-control" placeholder="Name" />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="productPrice">Product Price:</label>
+                        <input onChange={(event) => this.setState({ product: { ...this.state.product, price: event.target.value } })} type="number" min="0" max="10000" className="form-control" placeholder="$ Price" />
+                    </div>
 
-                            {this.state.images.map((image, index) => (
-                                <img src={image} alt="" key={index} className="col img-rounded" style={imgStyle} />
+                    <div className="form-group">
+                        <label>Select Category:</label>
+                        <select onChange={(event) => this.setState({ category: event.target.value })} className="form-control">
+                            <option value="1" defaultValue="Select">Select</option>
+                            {this.state.categories.map((ctg) => (
+                                <option key={ctg._id} value={ctg.name}>
+                                    {ctg.name}
+                                </option>
                             ))}
+                        </select>
+                    </div>
 
-                        </div>
-                        <input onClick={this.createProduct} type="submit" className="btn btn-default col-xs-offset-9 col-xs-3" value="Submit" />
-                    </form>
+                    <div className="form-group">
+                        <label htmlFor="productImage">Product Description:</label>
+                        <textarea onChange={(event) => this.setState({ product: { ...this.state.product, description: event.target.value } })} className="form-control" rows="5" placeholder="Product Description"></textarea>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="productImage">Product Images:</label>
+                        <div className="input-group">
+                            <input onChange={(event) => this.setState({ newImage: event.target.value  })} type="text" className="form-control" placeholder="Image URL" />
+                            <span className="input-group-btn"><button onClick={this.addImage} className="btn btn-default">Add Image</button></span></div>
+
+                        {this.state.product.images.map((image, index) => (
+                            <img src={image} alt="" key={index} className="col img-rounded" style={imgStyle} />
+                        ))}
+
+                    </div>
+                    <input onClick={this.createProduct} type="submit" className="btn btn-default col-xs-offset-9 col-xs-3" value="Submit" />
+                </form>
                 </div>
-            </div>
         );
     }
 }
