@@ -8,6 +8,8 @@ import Categories from "./components/Categories";
 import CreateCategory from "./components/CreateCategories";
 import Products from "./components/Products";
 import CreateProduct from "./components/CreateProducts";
+import Sizes from "./components/Sizes";
+import CreateSize from "./components/CreateSize";
 import HomePage from "./components/HomePage";
 import Admin from "./components/Admin";
 
@@ -53,6 +55,8 @@ ReactDOM.render(
                 <Route exact path="/categories/create" component={CreateCategory} />
                 <Route exact path="/products" component={Products} />
                 <Route exact path="/products/create" component={CreateProduct} />
+                <Route exact path="/sizes" component={Sizes} />
+                <Route exact path="/sizes/create" component={CreateSize} />
                 <Route exact path="/" component={HomePage} />
                 <Route exact path="/admin" component={Admin} />
             </Switch>

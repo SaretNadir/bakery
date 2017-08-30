@@ -14,7 +14,8 @@ class CreateProducts extends React.Component {
                 images: [],
             },
             newImage: '',
-            categories: []
+            categories: [],
+            sizes:[]
         };
 
         this.createProduct = this.createProduct.bind(this);
@@ -37,9 +38,15 @@ class CreateProducts extends React.Component {
 
     componentDidMount() {
         var component = this;
+        
         axios.get('/api/categories').then(function (response) {
             console.log(response);
             component.setState({ categories: response.data });
+        });
+
+         axios.get('/api/sizes').then(function (response) {
+            console.log(response);
+            component.setState({ sizes: response.data });
         });
     }
 
@@ -77,13 +84,25 @@ class CreateProducts extends React.Component {
                     </div>
 
                     <div className="form-group">
+                        <label>Select Size:</label>
+                        <select onChange={(event) => this.setState({ size: event.target.value })} className="form-control">
+                            <option value="1" defaultValue="Select">Select</option>
+                            {this.state.sizes.map((dim) => (
+                                <option key={dim._id} value={dim.size}>
+                                    {dim.size}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+
+                    <div className="form-group">
                         <label htmlFor="productImage">Product Description:</label>
                         <textarea onChange={(event) => this.setState({ product: { ...this.state.product, description: event.target.value } })} className="form-control" rows="5" placeholder="Product Description"></textarea>
                     </div>
                     <div className="form-group">
                         <label htmlFor="productImage">Product Images:</label>
                         <div className="input-group">
-                            <input onChange={(event) => this.setState({ newImage: event.target.value  })} type="text" className="form-control" placeholder="Image URL" />
+                            <input onChange={(event) => this.setState({ newImage: event.target.value })} type="text" className="form-control" placeholder="Image URL" />
                             <span className="input-group-btn"><button onClick={this.addImage} className="btn btn-default">Add Image</button></span></div>
 
                         {this.state.product.images.map((image, index) => (
@@ -93,7 +112,7 @@ class CreateProducts extends React.Component {
                     </div>
                     <input onClick={this.createProduct} type="submit" className="btn btn-default col-xs-offset-9 col-xs-3" value="Submit" />
                 </form>
-                </div>
+            </div>
         );
     }
 }
