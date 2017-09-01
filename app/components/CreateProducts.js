@@ -11,11 +11,11 @@ class CreateProducts extends React.Component {
                 name: '',
                 price: '',
                 description: '',
-                images: [],
+                images: []
             },
             newImage: '',
             categories: [],
-            sizes:[]
+            sizes: []
         };
 
         this.createProduct = this.createProduct.bind(this);
@@ -38,13 +38,13 @@ class CreateProducts extends React.Component {
 
     componentDidMount() {
         var component = this;
-        
+
         axios.get('/api/categories').then(function (response) {
             console.log(response);
             component.setState({ categories: response.data });
         });
 
-         axios.get('/api/sizes').then(function (response) {
+        axios.get('/api/sizes').then(function (response) {
             console.log(response);
             component.setState({ sizes: response.data });
         });

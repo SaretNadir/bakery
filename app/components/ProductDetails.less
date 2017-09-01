@@ -1,0 +1,50 @@
+#ProductDetails {
+    font-family: "Roboto";
+    letter-spacing: 1px;
+    .modal-content {
+        border-radius: 0;
+        border: 2px solid #222;
+        .modal-header {
+            text-transform: uppercase;
+            letter-spacing: 0;
+            border-bottom: none;
+            .close{
+                opacity: 1;
+            }
+        }
+        .modal-body {
+            .product-img {
+                .img-responsive {
+                    margin: auto;
+                }
+            }
+            .product-content {
+                margin-top: 15px;
+            }
+        }
+        .btn-default {
+            margin-top: 15px;
+            width: 100%;
+            i {
+                margin-right: 15px;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    #ProductDetails {
+        width: 100%;
+        max-width: 800px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #ProductDetails {
+        max-width: 600px;
+
+        .product-img {
+            margin-top: -20px;
+        }
+    }
+}
